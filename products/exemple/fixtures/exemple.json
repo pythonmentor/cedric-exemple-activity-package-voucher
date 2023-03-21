@@ -1,0 +1,65 @@
+[
+  { "model": "exemple.product", "pk": 1, "fields": {} },
+  { "model": "exemple.product", "pk": 2, "fields": {} },
+  { "model": "exemple.product", "pk": 3, "fields": {} },
+  { "model": "exemple.product", "pk": 4, "fields": {} },
+  {
+    "model": "exemple.activity",
+    "pk": 1,
+    "fields": { "product": 1, "name": "Canoe Kayak", "unit_price": "100.00" }
+  },
+  {
+    "model": "exemple.activity",
+    "pk": 2,
+    "fields": { "product": 3, "name": "Canyoning", "unit_price": "50.00" }
+  },
+  {
+    "model": "exemple.package",
+    "pk": 1,
+    "fields": {
+      "product": 2,
+      "name": "6 sessions de canoe Kayak",
+      "activity": 1,
+      "number_of_sessions": 6,
+      "discount": "10.00"
+    }
+  },
+  {
+    "model": "exemple.voucher",
+    "pk": 1,
+    "fields": {
+      "product": 4,
+      "name": "Bon pour des session de canoe et de canyoning",
+      "packages": [1],
+      "activities": [1, 2]
+    }
+  },
+  {
+    "model": "exemple.orderline",
+    "pk": 1,
+    "fields": { "product": 2, "user": 1, "number": 1, "unit_price": "540.00" }
+  },
+  {
+    "model": "exemple.orderline",
+    "pk": 2,
+    "fields": { "product": 1, "user": 1, "number": 1, "unit_price": "100.00" }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$hQLAqrJT4Ip4XDu1k4owc5$m/d4+k4ti4gviKTtrQwCr4ITDxPG1JCYOzD7EknT0ls=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "thierry",
+      "first_name": "",
+      "last_name": "",
+      "email": "thierry@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-03-21T11:36:39.764Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
