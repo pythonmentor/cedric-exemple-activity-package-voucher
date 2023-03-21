@@ -1,0 +1,40 @@
+{% load webpack_loader static %}
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+    {% block head_styles %}
+      {% stylesheet_pack 'app' %}
+    {% endblock head_styles %} 
+    {% block head_scripts %}{% endblock head_scripts %}
+  </head>
+  <body class="{% block body_classes %}d-flex flex-column min-vh-100 justify-content-between{% endblock body_classes %}">
+    <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible {% if message.tags %}{{ message.tags }}{% endif %}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    {% block navigation %}{% include 'partials/navigation.html' %}{% endblock navigation %}
+    {% block header %}{% endblock header %}
+    {% block outer_content %}
+        <main class="flex-grow-1 container">
+          {% block content %}{% endblock content %}
+        </main>
+    {% endblock outer_content %}
+    {% block footer %}{% include 'partials/footer.html' %}{% endblock footer %}
+    
+    {% block modal %}{% endblock modal %}
+    {% block bottom_scripts %}
+      {% javascript_pack 'app' attrs='charset="UTF-8"' %}
+    {% endblock bottom_scripts %}
+  </body>
+</html>
